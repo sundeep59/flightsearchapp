@@ -1,0 +1,129 @@
+body {
+    font: 1em/150% Calibri;
+}
+.flight-data {
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-top: 30px;
+    padding: 2px;
+    box-shadow: 1px 1px 1px;
+}
+.space{
+    color: white;
+}
+.booking-info{
+    float: right;
+}
+#result {
+    font-size: 1.5em;
+}
+.slider{
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 5px;
+}
+.image {
+    width: 100px;
+    height: 70px;
+    border: 1px solid #ccc;
+    margin-top: 2px;
+}
+.fare{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#pagewrap {
+    padding: 5px;
+    width: 960px;
+    margin: 20px auto;
+}
+
+#header > img{
+    height: 80px;
+    width: 960px;
+    border: 1px solid #ccc;
+}
+
+#content {
+    width: 220px;
+    float: left;
+}
+
+#sidebar {
+    width: 730px;
+    float: right;
+}
+
+#footer > h5{
+    clear: both;
+    text-align: center;
+    border: 1px solid #ccc;
+
+}
+
+/* MEDIA QUERIES */
+
+/* for 980px or less */
+@media screen and (max-width: 980px) {
+
+    #pagewrap {
+        width: 94%;
+    }
+
+    #content {
+        width: 65%;
+    }
+
+    #sidebar {
+        width: 30%;
+    }
+
+}
+
+/* for 700px or less */
+@media screen and (max-width: 700px) {
+
+    #content {
+        width: auto;
+        float: none;
+    }
+
+    #sidebar {
+        width: auto;
+        float: none;
+    }
+
+}
+
+/* for 480px or less */
+@media screen and (max-width: 480px) {
+
+    #header {
+        height: auto;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+}
+
+#content {
+}
+
+#sidebar {
+
+}
+
+#header, #content, #sidebar {
+    margin-bottom: 5px;
+}
+
+#pagewrap {
+    border: solid 1px #ccc;
+}

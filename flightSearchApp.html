@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" ng-app="flightSearchApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> :: Easy Travel :: </title>
+</head>
+
+<body data-ng-controller="SearchCtrl">
+
+<div id="pagewrap">
+
+    <div id="header">
+        <img src="images/flight-banner.jpg">
+    </div>
+
+    <div id="content">
+        <div class="tabbable">
+            <ul class="tabs">
+                <li><a href="#oneway">Oneway</a></li>
+                <li><a href="#return">Return</a></li>
+            </ul>
+            <div class="tabcontent">
+                <div id="oneway" class="tab">
+                    From:
+                    <select ng-model="from">
+                        <option ng-repeat="name in cities" value="{{name.city}}">{{name.city}}</option>
+                    </select>
+                    <div class="clearfix"></div>
+                    To:
+                    <select ng-model="to">
+                        <option ng-repeat="name in cities" value="{{name.city}}">{{name.city}}</option>
+                    </select>
+                    <div class="clearfix"></div>
+                    Depart On:
+                    <input type="date" name="departDate" ng-model="departDate.value"
+                           placeholder="yyyy-MM-dd" min="2016-02-05" max="2017-12-31"/>
+                    Passengers:
+                    <select>
+                        <option ng-repeat="x in passengers" value="{{x.value}}">{{x.value}}</option>
+                    </select>
+                </div>
+                <div id="return" class="tab">
+                    From:
+                    <select ng-model="from">
+                        <option ng-repeat="name in cities" value="{{name.city}}">{{name.city}}</option>
+                    </select>
+                    <div class="clearfix"></div>
+                    To:
+                    <select ng-model="to">
+                        <option ng-repeat="name in cities" value="{{name.city}}">{{name.city}}</option>
+                    </select>
+                    <div class="clearfix"></div>
+                    Depart On: <input type="date" name="departDate" ng-model="departDate.value"
+                                      placeholder="yyyy-MM-dd" min="2016-02-05" max="2017-12-31"/>
+                    <div class="clearfix"></div>
+                    Return On: <input type="date" name="returnDate" ng-model="returnDate.value"
+                                      placeholder="yyyy-MM-dd" min="2016-02-06" max="2017-12-31"/>
+                    Passengers:
+                    <select>
+                        <option ng-repeat="x in passengers" value="{{x.value}}">{{x.value}}</option>
+                    </select>
+                </div>
+                <input type="button" value="Search" class="search-btn" ng-click="filterData()">
+            </div>
+        </div>
+        <div class="slider">
+            <h3>Refine Flight Search</h3>
+            2500<input id="price" type="range" min="2500" max="6000" step="500" value="3000" ng-model="fare"/>6000
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <div>
+            <span> <b>{{from}} > {{to}} > {{from}}</b></span>
+            <span class="booking-info">
+                Depart Date: <b>{{departDate.value | date: "yyyy-MM-dd"}}</b>
+                <div class="clearfix"></div>
+                Return Date: <b>{{returnDate.value | date: "yyyy-MM-dd"}}</b>
+            </span>
+        </div>
+        <div class="flight-data" data-ng-repeat="data in flightData | filter: fare ">
+            <div class="section group">
+                <div class="col span_1_of_3">
+                    <div class="fare" data-ng-bind="data.fare"></div>
+                    <div data-ng-bind="data.flightoneway"></div>
+                    <div>
+                        <span data-ng-bind="data.from"></span> >
+                        <span data-ng-bind="data.to"></span>
+                    </div>
+                    <div>Depart: <span data-ng-bind="data.depart1"></span></div>
+                    <div>Arrive: <span data-ng-bind="data.arrive1"></span></div>
+                </div>
+                <div class="col span_1_of_3">
+                    <div class="space" data-ng-bind="data.space"></div>
+                    <div data-ng-bind="data.flightreturn"></div>
+                    <div>
+                        <span data-ng-bind="data.to"></span> >
+                        <span data-ng-bind="data.from"></span>
+
+                    </div>
+                    <div>Depart: <span data-ng-bind="data.depart2"></span></div>
+                    <div>Arrive: <span data-ng-bind="data.arrive2"></span></div>
+                </div>
+                <div class="col span_1_of_3">
+                    <div class="space" data-ng-bind="data.space"></div>
+                    <div><img src="{{data.image}}" class="image"></div>
+                    <div><input type="button" value="{{data.book}}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <h5>All rights reserved for 2016.</h5>
+    </div>
+
+</div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+<script src="js/css3-mediaqueries.js"></script>
+<script src="js/searchCtrl.js"></script>
+<script src="js/tabs.js"></script>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/tabs.css"/>
+</html>
